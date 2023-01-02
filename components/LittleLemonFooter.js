@@ -4,7 +4,7 @@ export default function LittleLemonFooter() {
 	return (
 		<View
 			style={{
-				backgroundColor: '#F4CE14'
+				backgroundColor: '#F4CE14' //yellow
 			}}
 		>
 			<Text
