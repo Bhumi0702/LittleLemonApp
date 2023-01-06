@@ -5,10 +5,8 @@ export default function LittleLemonFooter() {
 	return (
 		<View
 			style={{
-                flex: 0.2,
 				backgroundColor: '#F4CE14',
-				position: 'fixed',
-				bottom: 0
+				marginBottom: 0
 			}}
 		>
 			<Text
