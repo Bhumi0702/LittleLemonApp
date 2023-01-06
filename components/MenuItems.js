@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import { Menu } from 'react-native-paper';
 
 const menuItemsToDisplay = [
@@ -9,35 +9,33 @@ const menuItemsToDisplay = [
 
 const MenuItems = () => {
 	return (
-		<View style={{ flex: 0.75 }}>
-			<ScrollView
-				indicatorStyle="white"
-				style={{
-					paddingHorizontal: 40,
-					paddingVertical: 40,
-					backgroundColor: 'black'
-				}}
-			>
-				<Text
-					style={{
-						color: ' white',
-						fontSize: 40,
-						flexWrap: 'wrap'
-					}}
-				>
-					View Menu
-				</Text>
-				<Text
-					style={{
-						color: '#F4CE14',
-						fontSize: 36
-					}}
-				>
-					{menuItemsToDisplay[0]}
-				</Text>
+		<View style={styles.container}>
+			<ScrollView indicatorStyle="white" style={styles.innerContainer}>
+				<Text style={styles.menuText}>View Menu</Text>
+				<Text style={styles.otherText}>{menuItemsToDisplay[0]}</Text>
 			</ScrollView>
 		</View>
 	);
 };
 
 export default MenuItems;
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 0.75
+	},
+	innerContainer: {
+		paddingHorizontal: 40,
+		paddingVertical: 40,
+		backgroundColor: 'black'
+	},
+	menuText: {
+		color: ' white',
+		fontSize: 40,
+		flexWrap: 'wrap'
+	},
+	otherText: {
+		color: '#F4CE14',
+		fontSize: 36
+	}
+});
