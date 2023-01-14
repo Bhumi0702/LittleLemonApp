@@ -28,7 +28,21 @@ const FeedbackForm = () => {
 					placeholder="Last Name"
 					onChangeText={onChangeLastName}
 				/>
-				<TextInput style={styles.input} value={message} placeholder="Message" onChangeText={onChangeMessage} />
+				<TextInput
+					style={styles.input}
+					value={phoneNumber}
+					placeholder="Phone Number"
+					onChangeText={onChangePhoneNumber}
+					keyboardType={'phone-pad'}
+				/>
+				<TextInput
+					style={styles.input}
+					value={message}
+					placeholder="Please leave Feedback"
+					onChangeText={onChangeMessage}
+					multiline={true}
+					maxLength={250}
+				/>
 			</ScrollView>
 		</KeyboardAvoidingView>
 	);
