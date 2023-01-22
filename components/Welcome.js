@@ -1,9 +1,23 @@
 import * as React from 'react';
-import { View, Text, ScrollView, StyleSheet, Image } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, Image, Button, useColorScheme, useWindowDimensions } from 'react-native';
+import { useDeviceOrientation, useClipboard } from '@react-native-community/hooks';
 
 const Welcome = () => {
+	const colorScheme = useColorScheme();
+	const window = useWindowDimensions();
+	const orientation = useDeviceOrientation();
+	const [ data, setstring ] = useClipboard();
+
+	console.log('is orientation portrait: ', orientation.portrait);
+	console.log('is orientation lamdscape: ', orientation.landscape);
+
 	return (
-		<ScrollView style={styles.container}>
+		<ScrollView
+			style={[
+				styles.container,
+				colorScheme === 'light' ? { backgroundColor: '#fff' } : { backgroundColor: '#333333' }
+			]}
+		>
 			<Image
 				style={styles.logo}
 				source={require('../img/littleLemonLogo.png')}
@@ -12,6 +26,18 @@ const Welcome = () => {
 				accessibilityLabel={'Littel Lemon Logo'}
 			/>
 			<Text style={styles.title}>Little Lemon, your local Mediterranean Bistro</Text>
+			<Text style={styles.regular}>Color Scheme: {colorScheme}</Text>
+
+			<Text style={styles.regular}>Window Dimensions</Text>
+			<Text style={styles.regular}>Height: {window.height}</Text>
+			<Text style={styles.regular}>Width: {window.width}</Text>
+			<Text style={styles.regular}>Font Scale: {window.fontScale}</Text>
+			<Text>{data}</Text>
+
+			<Button title="Update Clipboard" onPress={() => setstring('new clipbaord data')}>
+				Set Clipboard
+			</Button>
+
 			<Image
 				style={styles.image}
 				source={require('../img/Picture1.png')}
@@ -59,10 +85,12 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		padding: 24,
-		marginTop: 25,
-		backgroundColor: '#fff'
+		marginTop: 25
 	},
-
+	regular: {
+		fontSize: 18,
+		textAlign: 'center'
+	},
 	title: {
 		marginTop: 16,
 		paddingVertical: 10,
