@@ -1,6 +1,5 @@
 import { ScrollView, Text, TextInput, StyleSheet, Alert, Pressable } from 'react-native';
 import React, { useState } from 'react';
-import { View } from 'react-native-web';
 
 export default function LoginScreen() {
 	const [ email, onChangeEmail ] = useState('');
@@ -58,14 +57,14 @@ const styles = StyleSheet.create({
 	headerText: {
 		padding: 40,
 		fontSize: 30,
-		color: '#EDEFEE',
+		color: 'black',
 		textAlign: 'center'
 	},
 	regularText: {
 		fontSize: 24,
 		padding: 20,
 		marginVertical: 8,
-		color: '#EDEFEE',
+		color: 'black',
 		textAlign: 'center'
 	},
 	input: {
