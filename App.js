@@ -1,4 +1,4 @@
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LittleLemonHeader from './components/LittleLemonHeader';
@@ -13,19 +13,44 @@ export default function App() {
 
 	const Stack = createNativeStackNavigator();
 
+	function LogoTitle() {
+		return(
+			<Image source={require('./img/logo.png')}
+				style={{
+					height: 40,
+					width: 300,
+					resizeMode: 'contain',
+					alignself: 'center',
+				}}
+			></Image>
+		);
+	}
+
 	return (
 		<>
 			<NavigationContainer>
-				<View style={styles.container}>
-					<LittleLemonHeader />
-						<Stack.Navigator initialRouteName='Login'>
-							<Stack.Screen name='Welcome' component={WelcomeScreen} />
+				
+						<Stack.Navigator 
+							initialRouteName='Login'
+							screenOptions={{
+								headerStyle: { backgroundColor: '#333333' },
+								headerTintColor: '#fff',
+								headerTitleStyle: {
+									fontWeight: 'bold',
+								},
+							}}>
+							<Stack.Screen 
+								name='Welcome' 
+								component={WelcomeScreen} 
+								options={{ 
+									title: 'Home',
+									headerTitle: (props) => <LogoTitle {...props}></LogoTitle>
+								}}/>
 							<Stack.Screen name='Login'component={LoginScreen} />
+							<Stack.Screen name='Menu'component={MenuItems} />
 						</Stack.Navigator>
-				</View>
-				<View style={styles.footerView}>
-					<LittleLemonFooter />
-				</View>
+				
+			
 			</NavigationContainer>
 		</>
 	);

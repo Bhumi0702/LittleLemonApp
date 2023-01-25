@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { View, Text, ScrollView, StyleSheet, Image, useColorScheme } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, Image, Pressable, useColorScheme } from 'react-native';
 
-export default function WelcomeScreen() {
+const WelcomeScreen = ({ navigation }) => {
 	const colorScheme = useColorScheme();
 
 	return (
@@ -29,9 +29,12 @@ export default function WelcomeScreen() {
 				Little Lemon is a charming neighborhood bistro that serves simple food and classic cocktails in a lively
 				but casual environment. We would love to hear more about your experience with us!
 			</Text>
+			<Pressable onPress={() => navigation.navigate('Menu')}>
+				<Text style={styles.buttonText}>View Menu</Text>
+			</Pressable>
 		</ScrollView>
 	);
-}
+};
 
 const styles = StyleSheet.create({
 	container: {
@@ -68,5 +71,13 @@ const styles = StyleSheet.create({
 		fontSize: 30,
 		color: '#EDEFEE',
 		textAlign: 'center'
+	},
+	buttonText: {
+		padding: 30,
+		fontSize: 20,
+		color: 'black',
+		textAlign: 'center'
 	}
 });
+
+export default WelcomeScreen;

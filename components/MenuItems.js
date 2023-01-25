@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, SectionList, Pressable } from 'react-native';
 
-
 const menuItemsToDisplay = [
 	{
 		title: 'Appetizers',
@@ -57,7 +56,7 @@ const Separator = () => <View style={menuStyles.separator} />;
 
 const Footer = () => <Text style={menuStyles.footerText}>All Rights Reserved by Little Lemon 2022</Text>;
 
-const MenuItems = () => {
+const MenuItems = ({ navigation }) => {
 	const [ showMenu, setShowMenu ] = useState(false);
 
 	const renderItem = ({ item }) => <Item name={item.name} price={item.price} />;
@@ -90,6 +89,9 @@ const MenuItems = () => {
 					//ItemSeparatorComponent={Separator}
 				/>
 			)}
+			<Pressable onPress={() => navigation.goBack()}>
+				<Text style={menuStyles.buttonText}>Go back</Text>
+			</Pressable>
 		</View>
 	);
 };
