@@ -1,7 +1,9 @@
+import 'react-native-gesture-handler';
 import { View, StyleSheet, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Ionicons } from '@expo/vector-icons';
 import LittleLemonHeader from './components/LittleLemonHeader';
 import LittleLemonFooter from './components/LittleLemonFooter';
@@ -15,6 +17,7 @@ export default function App() {
 
 	const Stack = createNativeStackNavigator();
 	const Tab = createBottomTabNavigator();
+	const Drawer = createDrawerNavigator();
 
 	function LogoTitle() {
 		return(
@@ -31,9 +34,25 @@ export default function App() {
 
 	return (
 		<>
+
+		 <NavigationContainer>
+			<View style={styles.container}>
+				<LittleLemonHeader />
+				<Drawer.Navigator useLegacyImplementation initialRouteName="Login">
+					<Drawer.Screen name="Welcome" component={WelcomeScreen} />
+					<Drawer.Screen name="Login" component={LoginScreen} />
+				</Drawer.Navigator>
+			</View>
+			<View style={styles.footerContainer}>
+				<LittleLemonFooter />
+			</View>
+      </NavigationContainer>
+
+
+
 			{/* 	TAB NAVIGATOR BETWEEM LOGIN AND WELCOME SCREEN  */}
 			
-		<NavigationContainer>
+		{/* <NavigationContainer>
 			<View style={styles.container}>
 				<LittleLemonHeader />
 				<Tab.Navigator
@@ -56,7 +75,7 @@ export default function App() {
 				<View style={styles.footerContainer}>
 				<LittleLemonFooter />
 				</View>
-      	</NavigationContainer>
+      	</NavigationContainer> */}
 
 			{/* :::::::::::::::::::TAB NAVIGATOR ---------WELCOME & MENU SCREEN.................................
 			<NavigationContainer>
@@ -64,7 +83,6 @@ export default function App() {
 					screenOptions={({ route }) => ({
 						tabBarIcon: ({ focused, color, size }) => {
 							let iconName;
-
 							if(route.name === 'Welcome') {
 								iconName = focused
 									? 'ios-information-circle'
@@ -120,5 +138,3 @@ const styles = StyleSheet.create({
 		backgroundColor: '#33333'
 	}
 })
-
-
