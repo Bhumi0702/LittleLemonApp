@@ -10,6 +10,8 @@ Some of the basics skills I have learned:
 
 •	Setting up an app with React Navigation and moving between screens
 
+
+
 Gained experience with the following tools and software: 
 
 •	React
